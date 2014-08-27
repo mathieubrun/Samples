@@ -15,40 +15,17 @@ namespace Samples.CodeContracts.Tests
             Assert.AreEqual(r.Numerator / r.Denominator, 1);
         }
 
-        [TestMethod]
+        [Ignore]
         public void Failing_Constructor()
         {
             var r = new Rational(10, 0);
         }
 
-        [TestMethod]
+        [Ignore]
         public void Failing_Invariant()
         {
             var r = new Rational(10, 10) { Denominator = 0 };
         }
-    }
-
-    [Serializable]
-    public class CustomException : Exception
-    {
-        public CustomException()
-        {
-        }
-
-        public CustomException(string message)
-            : base(message)
-        {
-        }
-
-        public CustomException(string message, Exception inner)
-            : base(message, inner)
-        {
-        }
-
-        protected CustomException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
 
     public class Rational
