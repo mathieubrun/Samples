@@ -1,0 +1,4 @@
+﻿<%@ ServiceHost 
+    Language="C#"
+    Service="Samples.Wcf.GenericService.WcfService.GenericService`1[[Samples.Wcf.GenericService.WcfInterfaces.SpecificEntity, Samples.Wcf.GenericService.WcfInterfaces]]" 
+    CodeBehind="GenericService.cs" %>
