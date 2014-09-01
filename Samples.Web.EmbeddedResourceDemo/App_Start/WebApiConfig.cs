@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Samples.Web.EmbeddedResourceDemo.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Dispatcher;
 
 namespace Samples.Web.EmbeddedResourceDemo
 {
@@ -9,12 +12,20 @@ namespace Samples.Web.EmbeddedResourceDemo
     {
         public static void Register(HttpConfiguration config)
         {
+            DelegatingHandler[] handlers = new DelegatingHandler[] {
+                new  EmbeddedResourceHandler(typeof(Class1).Assembly)
+            };
+
+            var routeHandlers = HttpClientFactory.CreatePipeline(new HttpControllerDispatcher(config), handlers);
+
+
             config.Routes.MapHttpRoute(
                 name: "EmbeddedResourceDemo",
                 routeTemplate: "EmbeddedResourceDemoData/{*path}",
                 defaults: null,
                 constraints: null,
-                handler: new EmbeddedResourceHandler("Samples.Web.EmbeddedResourceDemo.Data"));
+                handler: routeHandlers);
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

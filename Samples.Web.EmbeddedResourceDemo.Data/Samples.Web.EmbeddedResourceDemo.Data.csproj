@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Hello.txt" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Some\Folder\Hierarchy\Hello.txt" />
   </ItemGroup>
